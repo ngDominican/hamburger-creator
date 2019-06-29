@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-between">
+  <h3>Creador de hamburguer</h3>
+  <div>
+    <button class="btn btn-danger" (click)="isCreated = !isCreated">Nueva hamburger</button>
+  </div>
+</div>
+<hr />
+<div class="text-danger animated fadeIn" *ngIf="!isCreated; else createTpl">
+  No hay hamburger en proceso de creación, crea una <b>Nueva Hamburger</b>
+</div>
+
+<ng-template #createTpl>
+  <div class="animated fadeInUp">
+    <div class="row">
+      <div class="col-4">
+        <form [formGroup]="form" (ngSubmit)="onSave()">
+          <div class="form-group">
+            <label for="name">Nombre: </label>
+            <input name="name" class="form-control" type="text" placeholder="Nombre" formControlName="name"
+              autocomplete="off" />
+            <span class="text-danger"
+              *ngIf="(form.get('name').touched || form.get('name').dirty) && form.get('name').invalid">El campo
+              es requerido</span>
+          </div>
+          <div class="form-group">
+            <label for="price">Precio: </label>
+            <input name="price" class="form-control" type="number" placeholder="Precio" formControlName="price" />
+            <span class="text-danger"
+              *ngIf="(form.get('price').touched || form.get('price').dirty) && form.get('price').invalid">El
+              campo es requerido</span>
+          </div>
+          <div class="form-group">
+            <label for="price">Ingredientes: </label>
+            <div>
+              <span class="text-danger" *ngIf="burger.ingredients.length === 0">No has seleccionado ning&uacute;n
+                ingrediente.</span>
+              <span class="mr-1 badge badge-pill badge-success animated pulse"
+                *ngFor="let ingredient of burger.ingredients; let i = index;">{{ingredient.name}} <a
+                  style="cursor: pointer;" (click)="onRemoveIngredient(i)">&times;</a> </span>
+            </div>
+          </div>
+          <div class="row">
+            <button class="col-sm-4 btn btn-warning mr-1" *ngIf="isCreated" (click)="onReset()">Limpiar</button>
+            <button class="col btn btn-success" type="submit" [disabled]="form.invalid">Guardar</button>
+          </div>
+
+        </form>
+      </div>
+      <div class="col-8">
+        <app-hamburger-viewer [hamburger]="burger"></app-hamburger-viewer>
+      </div>
+    </div>
+
+    <hr class="my-5" />
+
+    <app-ingredients-viewer (onSelectedIngredient)="onSelectIngredient($event)"></app-ingredients-viewer>
+
+  </div>
+</ng-template>

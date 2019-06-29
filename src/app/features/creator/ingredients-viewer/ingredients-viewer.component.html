@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="col">
+    <img *ngFor="let ingredient of ingredients$ | async" src="assets/ingredients/{{ ingredient.name }}.png"
+      (click)="onSelectIngredient(ingredient)" />
+  </div>
+</div>

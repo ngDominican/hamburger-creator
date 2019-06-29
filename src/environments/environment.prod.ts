@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  API: 'http://hamburgerapi.azurewebsites.net/api'
 };

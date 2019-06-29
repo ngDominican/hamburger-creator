@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+.burger {
+  position: relative;
+  width: 250px;
+  height: 350px;
+}
+
+.ingredient {
+  position: absolute;
+}
+
+.ingredient:nth-child(1) {
+  bottom: 0%;
+}
+
+.ingredient:nth-child(2) {
+  bottom: 8%;
+}
+
+.ingredient:nth-child(3) {
+  bottom: 16%;
+}
+
+.ingredient:nth-child(4) {
+  bottom: 24%;
+}
+
+.ingredient:nth-child(5) {
+  bottom: 32%;
+}
+
+.ingredient:nth-child(6) {
+  bottom: 40%;
+}
+
+.ingredient:nth-child(7) {
+  bottom: 48%;
+}
+
+.ingredient:nth-child(8) {
+  bottom: 56%;
+}
+
+.ingredient:nth-child(9) {
+  bottom: 64%;
+}
+
+.ingredient:nth-child(10) {
+  bottom: 72%;
+}
+
+.ingredient:nth-child(11) {
+  bottom: 80%;
+}
+
+.ingredient:nth-child(12) {
+  bottom: 88%;
+}
+
+.ingredient:nth-child(13) {
+  bottom: 96%;
+}
+
+.ingredient img {
+  width: 100%;
+}

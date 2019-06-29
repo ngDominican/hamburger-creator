@@ -1,0 +1,8 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/"><span class="text-danger">Hamburger</span> Creator</a>
+  <div class="navbar-nav mr-auto">
+    <a class="nav-item nav-link active" [routerLink]="['/orders']" routerLinkActive="active">Ordenes</a>
+    <a class="nav-item nav-link" [routerLink]="['/creator']" routerLinkActive="active">Crear</a>
+  </div>
+  <span class="navbar-text">Hola ngDominican &nbsp; <a [routerLink]="['login']">Salir</a></span>
+</nav>

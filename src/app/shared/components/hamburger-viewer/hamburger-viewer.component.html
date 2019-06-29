@@ -1,0 +1,12 @@
+<div class="d-flex flex-column align-items-center">
+  <div class="burger" *ngIf="hamburger?.ingredients?.length > 0; else noingredients">
+    <div class="ingredient animated slideInUp" *ngFor="let ingredient of hamburger?.ingredients">
+      <img src="assets/ingredients/{{ ingredient.name }}.png" />
+    </div>
+  </div>
+  <div>
+    <b>{{hamburger.name}}</b>
+  </div>
+</div>
+
+<ng-template #noingredients><b class="text-danger">No hay ingredientes...</b></ng-template>
