@@ -4,6 +4,7 @@ import { HamburgerService } from '../hamburger.service';
 import { Ingredient } from 'src/app/shared/models/ingredient.model';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 @Component({
   selector: 'app-hamburger-creator',
@@ -18,7 +19,8 @@ export class HamburgerCreatorComponent implements OnInit {
   constructor(
     private hamburgerService: HamburgerService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private analytics: AngularFireAnalytics
   ) {}
 
   ngOnInit() {
@@ -41,6 +43,8 @@ export class HamburgerCreatorComponent implements OnInit {
     const { ingredients } = this.form.controls;
     ingredient.order = ingredients.value.length + 1;
     ingredients.setValue([...ingredients.value, ingredient]);
+
+    this.analytics.logEvent('ingredient_selected', { name: ingredient.name, order: ingredient.order });
   }
 
   onRemoveIngredient(index: number) {
